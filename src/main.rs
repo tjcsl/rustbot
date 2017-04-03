@@ -1,3 +1,8 @@
+extern crate irc;
+
+use irc::client::prelude::*;
+
 fn main() {
-    println!("Hello, world!");
+    let server = IrcServer::new("config.json").unwrap();
+    server.identify().unwrap();
 }
