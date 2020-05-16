@@ -1,10 +1,9 @@
-extern crate irc;
-
 use irc::client::prelude::*;
 
-fn main() {
-    let mut reactor = IrcReactor::new().unwrap();
-    let config = Config::load("config.toml").unwrap();
-    let client = reactor.prepare_client_and_connect(&config).unwrap();
-    client.identify().unwrap();
+#[tokio::main]
+async fn main() -> irc::error::Result<()> {
+    let client = Client::new("config.toml").await?;
+    client.identify()?;
+    println!("Identity: {}", client.current_nickname());
+    Ok(())
 }
