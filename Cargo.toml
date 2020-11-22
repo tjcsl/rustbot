@@ -6,4 +6,7 @@ edition = "2018"
 
 [dependencies]
 irc = "*"
-tokio = "*"
+
+[dependencies.tokio]
+ version = "*"
+ features = ["macros", "rt-multi-thread"]
